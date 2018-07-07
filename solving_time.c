@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<math.h>
 
-/* 1-1
+/* page 8: practice 1-1
  * Given solving  time f(n) ms, 
  * calculate the biggest n for 
  * a second, a minute, an hour, a day, 
@@ -143,7 +143,7 @@ int main(){
 	//ans = n_n(upper);
 	//ans = n_n_n(upper);
 	//ans = f_2_n(upper);
-	//ans = fac_n(upper);
+	ans = fac_n(upper);
 	for(i = 0; i < N; i++){
 		printf("%d : %e ms %e\n",i,upper[i],ans[i]);
 	}
