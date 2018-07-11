@@ -104,6 +104,22 @@ void binary_search_insertion_sort(int a[], int lenth){
 	return;
 }
 
+// page 23: thinking 2-2
+// bubble_sort: O(n^2)
+void bubble_sort(int a[], int lenth){
+	int i,j,tmp;
+	for(i = 0; i < lenth; i++){
+		for(j = lenth - 1; j > i; j--){
+			if(a[j] < a[j - 1]){
+				tmp = a[j];
+				a[j] = a[j-1];
+				a[j-1] = tmp;
+			}
+		}
+	}
+	return;
+}
+
 int  main(){
 	int a[N];
 	int i;
@@ -116,7 +132,8 @@ int  main(){
 	//insertion_sort(a, N);
 	//selection_sort(a, N);
 	//merge_sort(a, N, 0, N-1);
-	binary_search_insertion_sort(a, N);
+	//binary_search_insertion_sort(a, N);
+        bubble_sort(a, N);
 	for(i = 0; i < N; i++){
 		printf("%d ", a[i]);
 	}
