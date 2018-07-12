@@ -4,10 +4,11 @@
 #define N 5
 #define MAX 10
 
-/* page 23: Honer method for
- *  	    f(x) = a0 + a1*x + a2*x^2 + ... + an*x^n
- *  	    	 = a0 + x*(a1 + x*(a2 + ... + x*(an-1 + x*an)...))
- * 	    O(n^2) down to O(n)
+/* page 23: thinking 2-3
+ *  	    Honer method for
+ *  	        f(x) = a0 + a1*x + a2*x^2 + ... + an*x^n
+ *  	    	     = a0 + x*(a1 + x*(a2 + ... + x*(an-1 + x*an)...))
+ * 	        O(n^2) down to O(n)
  */
 int honer(int * a, int n, int x){
 	int i,y = 0;
