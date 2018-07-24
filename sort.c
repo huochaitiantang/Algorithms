@@ -120,6 +120,42 @@ void bubble_sort(int a[], int lenth){
 	return;
 }
 
+// Max Heapify: make sure that A[i] satisfy heap feature
+void max_heapify(int a[], int lenth, int top){
+	int i, tmp;
+	tmp = a[top];
+	i = top * 2 + 1;
+	while(i < lenth){
+		if(i + 1 < lenth && a[i] < a[i + 1]) i++;
+		if(tmp >= a[i]) break;
+		a[(i - 1) / 2] = a[i];
+		i = i * 2 + 1;
+	}
+	a[(i - 1) / 2] = tmp;
+	return;
+}
+
+
+// page 87: heap sort
+// O(nlgn)
+void heap_sort(int a[], int lenth){
+	int i,tmp;
+	// build the heap
+	for(i = lenth / 2; i >= 0; i--){
+		max_heapify(a, lenth, i);
+	}
+	//
+	for(i = lenth - 1; i >= 0; i--){
+		tmp = a[i];
+		a[i] = a[0];
+		a[0] = tmp;
+		max_heapify(a, i, 0);
+
+	}
+	return;
+}
+
+
 int  main(){
 	int a[N];
 	int i;
@@ -133,7 +169,8 @@ int  main(){
 	//selection_sort(a, N);
 	//merge_sort(a, N, 0, N-1);
 	//binary_search_insertion_sort(a, N);
-        bubble_sort(a, N);
+        //bubble_sort(a, N);
+        heap_sort(a, N);
 	for(i = 0; i < N; i++){
 		printf("%d ", a[i]);
 	}
