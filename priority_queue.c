@@ -67,6 +67,42 @@ void max_heap_insert(int * a, int * heap_size, int key){
 	return;
 }
 
+/* page 93: practice 6.5-8
+ * DELETE_HEAP
+ * O(lgn)
+ */
+void delete_heap(int * a, int * heap_size, int i){
+	int j,k,tmp;
+	if(i >= *heap_size) return;
+	tmp = a[*heap_size - 1];
+	*heap_size = *heap_size - 1;
+	// from i to root
+	if(a[i] <= tmp){
+		j = (i - 1) / 2;
+		while(i > 0 && tmp > a[j]){
+			a[i] = a[j];
+			i = j;
+			j = (i - 1) / 2;
+		}
+		a[i] = tmp;
+	}
+	// from i to leaf
+	else{
+		j = i * 2 + 1;
+		while(j < *heap_size){
+			if(j + 1 < *heap_size && a[j + 1] > a[j]) j++;
+			if(a[j] <= tmp) break;
+			a[i] = a[j];
+			i = j;
+			j = i * 2 + 1;
+		}
+		a[i] = tmp;
+
+	}
+	return;
+}
+
+
 /* printf heap
  */
 void print_heap(int * a, int heap_size){
@@ -128,6 +164,10 @@ int main(){
 	printf("Max: %d\n", maximum(a, heap_size));
 	tmp = heap_extract_max(a, &heap_size);
 	printf("Extract Max: %d\n", tmp); 
+	print_heap(a, heap_size);
+	tmp = 15;
+	printf("Delete [%d]\n", tmp);
+	delete_heap(a, &heap_size, tmp);
 	print_heap(a, heap_size);
 
 	return 0;
